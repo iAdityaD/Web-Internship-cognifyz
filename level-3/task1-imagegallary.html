@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  border-radius:2px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+
+.container {
+  position: relative;
+}
+
+.mySlides {
+  width:60%;
+  margin: 50px auto;
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.numbertext {
+  background-color: #05050580;
+  color: #f2f2f2;
+  font-size: 25px;
+  padding: 8px 12px;
+  position: absolute;
+  border-radius: 5px;
+  top: 0;
+}
+
+
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.down-btn {
+  display:none;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 20px;
+  font-size: 20px;
+  background-color: #4fc6f1;
+  color: rgb(246, 245, 245);
+  border-radius: 100%;
+  border:none;
+  transition: ease-in-out 2ms;
+}
+.down-btn:hover {
+      padding:25px;
+}
+
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">Image Gallery</h2>
+
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext">Demon Slayer</div>
+    <img src="assets/image4.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">Huner X Hunter</div>
+    <img src="assets/image5.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">Attack On Titan</div>
+    <img src="assets/image6.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">One piece</div>
+    <img src="assets/one piece.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">Dragan Ball Z</div>
+    <img src="assets/image4.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">Jujutsu Kaisen</div>
+    <img src="assets/image5.jpg" style="width:100%">
+  </div>
+
+  <div class="caption-container">
+    <p id="caption">ANIME</p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="assets/image4.jpg" style="width:100%" onclick="currentSlide(1)" alt="Demon Slayer">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/image5.jpg" style="width:100%" onclick="currentSlide(2)" alt="Hunter X Hunter">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/image6.jpg" style="width:100%" onclick="currentSlide(3)" alt="Attack On Titan">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/one piece.jpg" style="width:100%" onclick="currentSlide(4)" alt="One Piece">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="assets/image1.jpg" style="width:100%" onclick="currentSlide(5)" alt="Dragan ball Z">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="assets/image2.jpg" style="width:100%" onclick="currentSlide(6)" alt="Jujutsu kaisen">
+    </div>
+  </div>
+  <div id="down-btn" class="down-btn" onclick="downDisplay()">&#x25BC;</div>
+</div>
+
+<script>
+let slideIndex = 1;
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  document.getElementById("down-btn").style.display="block"
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+function downDisplay(){
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  document.getElementById("down-btn").style.display="none";
+}
+</script>
+    
+</body>
+</html>
